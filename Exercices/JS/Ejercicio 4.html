@@ -1,0 +1,22 @@
+<!doctype html>
+<html>
+<head><meta charset="utf-8"><title>Ejercicio 4</title></head>
+<body>
+<!-- Ejercicio 4: Factorial (iterativo) -->
+<script>
+var numero = parseInt(prompt('Ingrese un número:', ''));
+var factorial = 1;
+
+if (numero < 0) {
+  document.write('Error: no se puede calcular el factorial de un número negativo');
+  console.log('Error: no se puede calcular el factorial de un número negativo');
+} else {
+  for (var i = 1; i <= numero; i++) {
+    factorial = factorial * i;
+  }
+  document.write('El factorial de ' + numero + ' es: ' + factorial);
+  console.log('El factorial de ' + numero + ' es: ' + factorial);
+}
+</script>
+</body>
+</html>

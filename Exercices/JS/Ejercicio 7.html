@@ -1,0 +1,16 @@
+<!doctype html>
+<html>
+<head><meta charset="utf-8"><title>Ejercicio 7</title></head>
+<body>
+<!-- Ejercicio 7: Letra DNI -->
+<script>
+var numeros = 'TRWAGMYFPDXBNJZSQVHLCKE';
+var numero = parseInt(prompt('Ingrese su número de DNI (sin letra):', ''));
+var resto = numero % 23;
+var letra = numeros.charAt(resto);
+
+document.write('DNI: ' + numero + ' - Letra: ' + letra);
+console.log('DNI: ' + numero + ' - Letra: ' + letra);
+</script>
+</body>
+</html>

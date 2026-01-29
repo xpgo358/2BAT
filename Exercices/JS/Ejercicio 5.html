@@ -1,0 +1,29 @@
+<!doctype html>
+<html>
+<head><meta charset="utf-8"><title>Ejercicio 5</title></head>
+<body>
+<!-- Ejercicio 5: Factorial (recursivo) -->
+<script>
+function factorialRecursivo(numero) {
+  if (numero < 0) {
+    return null;
+  }
+  if (numero === 0 || numero === 1) {
+    return 1;
+  }
+  return numero * factorialRecursivo(numero - 1);
+}
+
+var numero = parseInt(prompt('Ingrese un número:', ''));
+var factorial = factorialRecursivo(numero);
+
+if (factorial === null) {
+  document.write('Error: no se puede calcular el factorial de un número negativo');
+  console.log('Error: no se puede calcular el factorial de un número negativo');
+} else {
+  document.write('El factorial de ' + numero + ' es: ' + factorial);
+  console.log('El factorial de ' + numero + ' es: ' + factorial);
+}
+</script>
+</body>
+</html>

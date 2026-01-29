@@ -1,0 +1,27 @@
+<!doctype html>
+<html>
+<head><meta charset="utf-8"><title>Ejercicio 6</title></head>
+<body>
+<!-- Ejercicio 6: Suma recursiva -->
+<script>
+function sumaRecursiva(numeros, indice) {
+  if (indice === numeros.length) {
+    return 0;
+  }
+  return numeros[indice] + sumaRecursiva(numeros, indice + 1);
+}
+
+var cantidad = parseInt(prompt('¿Cuántos números desea sumar?', ''));
+var numeros = new Array();
+
+for (var i = 0; i < cantidad; i++) {
+  var numero = parseInt(prompt('Ingrese el número ' + (i + 1) + ':', ''));
+  numeros[i] = numero;
+}
+
+var suma = sumaRecursiva(numeros, 0);
+document.write('La suma es: ' + suma);
+console.log('La suma es: ' + suma);
+</script>
+</body>
+</html>

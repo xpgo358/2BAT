@@ -1,0 +1,37 @@
+<!doctype html>
+<html>
+<head><meta charset="utf-8"><title>Ejercicio 3</title></head>
+<body>
+<!-- Ejercicio 3: Suma de los 10 primeros primos -->
+<script>
+var suma = 0;
+var contador = 0;
+var numero = 2;
+
+while (contador < 10) {
+  var esPrimo = true;
+  var divisor = 2;
+  
+  if (numero < 2) {
+    esPrimo = false;
+  } else {
+    while (divisor < numero && esPrimo) {
+      if (numero % divisor === 0) {
+        esPrimo = false;
+      }
+      divisor = divisor + 1;
+    }
+  }
+  
+  if (esPrimo) {
+    suma = suma + numero;
+    contador = contador + 1;
+  }
+  numero = numero + 1;
+}
+
+document.write('Suma de los 10 primeros primos: ' + suma);
+console.log('Suma de los 10 primeros primos: ' + suma);
+</script>
+</body>
+</html>

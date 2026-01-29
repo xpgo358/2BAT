@@ -1,0 +1,28 @@
+<!doctype html>
+<html>
+<head><meta charset="utf-8"><title>Ejercicio 11</title></head>
+<body>
+<!-- Ejercicio 11: Sucesión de Fibonacci (recursivo) -->
+<script>
+function fibonacciRecursivo(numero) {
+  if (numero <= 1) {
+    return numero;
+  }
+  return fibonacciRecursivo(numero - 1) + fibonacciRecursivo(numero - 2);
+}
+
+var cantidad = parseInt(prompt('¿Cuántos términos de Fibonacci desea?', ''));
+var secuencia = '';
+
+for (var i = 0; i < cantidad; i++) {
+  secuencia = secuencia + fibonacciRecursivo(i);
+  if (i < cantidad - 1) {
+    secuencia = secuencia + ', ';
+  }
+}
+
+document.write('Fibonacci: ' + secuencia);
+console.log('Fibonacci: ' + secuencia);
+</script>
+</body>
+</html>
