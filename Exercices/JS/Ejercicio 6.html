@@ -2,26 +2,45 @@
 <html>
 <head><meta charset="utf-8"><title>Ejercicio 6</title></head>
 <body>
-<!-- Ejercicio 6: Suma recursiva -->
+<!-- Ejercicio 6: Suma de los N primeros números primos -->
 <script>
-function sumaRecursiva(numeros, indice) {
-  if (indice === numeros.length) {
-    return 0;
+function esPrimo(n) {
+  if (n < 2) {
+    return false;
   }
-  return numeros[indice] + sumaRecursiva(numeros, indice + 1);
+  for (var i = 2; i <= Math.sqrt(n); i++) {
+    if (n % i === 0) {
+      return false;
+    }
+  }
+  return true;
 }
 
-var cantidad = parseInt(prompt('¿Cuántos números desea sumar?', ''));
-var numeros = new Array();
+var cantidad = parseInt(prompt('¿Cuántos números primos desea sumar?', ''), 10);
 
-for (var i = 0; i < cantidad; i++) {
-  var numero = parseInt(prompt('Ingrese el número ' + (i + 1) + ':', ''));
-  numeros[i] = numero;
+if (isNaN(cantidad) || cantidad <= 0) {
+  document.write('Entrada inválida. Por favor ingrese un número entero positivo.');
+  console.log('Entrada inválida: ' + cantidad);
+} else {
+  var suma = 0;
+  var primos = new Array();
+  var contador = 0;
+  var numero = 2;
+
+  while (contador < cantidad) {
+    if (esPrimo(numero)) {
+      primos[contador] = numero;
+      suma += numero;
+      contador++;
+    }
+    numero++;
+  }
+
+  document.write('La suma de los ' + cantidad + ' primeros números primos es: ' + suma);
+  document.write('<br>Los primos son: ' + primos.join(', '));
+  console.log('La suma de los ' + cantidad + ' primeros números primos es: ' + suma);
+  console.log('Primos: ' + primos.join(', '));
 }
-
-var suma = sumaRecursiva(numeros, 0);
-document.write('La suma es: ' + suma);
-console.log('La suma es: ' + suma);
 </script>
 </body>
 </html>

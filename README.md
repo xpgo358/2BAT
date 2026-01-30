@@ -10,7 +10,7 @@ Repository of exercices of 2BAT
 - Ejercicio 3: Suma de los 10 primeros primos — [Exercices/JS/Ejercicio 3.html](Exercices/JS/Ejercicio 3.html)
 - Ejercicio 4: Factorial (iterativo) — [Exercices/JS/Ejercicio 4.html](Exercices/JS/Ejercicio 4.html)
 - Ejercicio 5: Factorial (recursivo) — [Exercices/JS/Ejercicio 5.html](Exercices/JS/Ejercicio 5.html)
-- Ejercicio 6: Suma recursiva — [Exercices/JS/Ejercicio 6.html](Exercices/JS/Ejercicio 6.html)
+- Ejercicio 6: Suma recursiva de los N primeros números primos — [Exercices/JS/Ejercicio 6.html](Exercices/JS/Ejercicio 6.html)
 - Ejercicio 7: Letra DNI — [Exercices/JS/Ejercicio 7.html](Exercices/JS/Ejercicio 7.html)
 - Ejercicio 8: Palíndromo — [Exercices/JS/Ejercicio 8.html](Exercices/JS/Ejercicio 8.html)
 - Ejercicio 9: Nota media — [Exercices/JS/Ejercicio 9.html](Exercices/JS/Ejercicio 9.html)
