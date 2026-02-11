@@ -1,0 +1,49 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Ejercicio 12</title>
+  </head>
+  <body>
+    <!-- Ejercicio 12: Suma de array de n números introducidos por teclado. Se para con valor 0. -->
+    <script>
+      function cargarNumeros() {
+        var arr = [];
+        var entrada;
+        var seguir = true;
+        while (seguir) {
+          entrada = prompt("Introduce un número (0 para terminar):", "0");
+          if (entrada === null) {
+            // usuario canceló
+            console.log("Entrada cancelada por el usuario.");
+            seguir = false;
+          } else {
+            entrada = parseInt(entrada);
+            if (isNaN(entrada)) {
+              alert("Entrada no válida. Introduce un número.");
+            } else if (entrada === 0) {
+              seguir = false;
+            } else {
+              arr.push(entrada);
+            }
+          }
+        }
+        return arr;
+      }
+
+      function sumarArray(a) {
+        var suma = 0;
+        var i;
+        for (i = 0; i < a.length; i++) {
+          suma = suma + a[i];
+        }
+        return suma;
+      }
+
+      var numeros = cargarNumeros();
+      var total = sumarArray(numeros);
+      document.write("Resultado: " + total);
+      console.log("Suma calculada:", total);
+    </script>
+  </body>
+</html>

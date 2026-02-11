@@ -16,5 +16,6 @@ Repository of exercices of 2BAT
 - Ejercicio 9: Nota media — [Exercices/JS/Ejercicio 9.html](Exercices/JS/Ejercicio 9.html)
 - Ejercicio 10: Fibonacci (iterativo) — [Exercices/JS/Ejercicio 10.html](Exercices/JS/Ejercicio 10.html)
 - Ejercicio 11: Fibonacci (recursivo) — [Exercices/JS/Ejercicio 11.html](Exercices/JS/Ejercicio 11.html)
+- Ejercicio 12: Suma de array de n números introducidos por teclado (termina con 0) — [Exercices/JS/Ejercicio 12.html](Exercices/JS/Ejercicio 12.html)
 
 ## Python

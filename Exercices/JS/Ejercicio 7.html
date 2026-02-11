@@ -1,16 +1,21 @@
 <!doctype html>
 <html>
-<head><meta charset="utf-8"><title>Ejercicio 7</title></head>
-<body>
-<!-- Ejercicio 7: Letra DNI -->
-<script>
-var letras = ['T','R','W','A','G','M','Y','F','P','D','X','B','N','J','Z','S','Q','V','H','L','C','K','E'];
-var numero = parseInt(prompt('Ingrese su número de DNI (sin letra):', ''));
-var resto = numero % 23;
-var letra = letras[resto];
+  <head>
+    <meta charset="utf-8" />
+    <title>Ejercicio 7</title>
+  </head>
+  <body>
+    <!-- Ejercicio 7: Letra DNI -->
+    <script>
+      var letras = "TRWAGMYFPDXBNJZSQVHLCKE";
+      var numero = parseInt(
+        prompt("Ingrese su número de DNI (sin letra):", ""),
+      );
+      var resto = numero % 23;
+      var letra = letras[resto];
 
-document.write('DNI: ' + numero + ' - Letra: ' + letra);
-console.log('DNI: ' + numero + ' - Letra: ' + letra);
-</script>
-</body>
+      document.write("DNI: " + numero + " - Letra: " + letra);
+      console.log("DNI: " + numero + " - Letra: " + letra);
+    </script>
+  </body>
 </html>
