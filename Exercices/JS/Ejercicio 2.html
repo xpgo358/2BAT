@@ -1,27 +1,32 @@
 <!doctype html>
 <html>
-<head><meta charset="utf-8"><title>Ejercicio 2</title></head>
-<body>
-<!-- Ejercicio 2: Saber si un número introducido por teclado es primo -->
-<script>
-var numero = parseInt(prompt('Ingrese un número:', ''));
-var esPrimo = true;
-var divisor = 2;
+  <head>
+    <meta charset="utf-8" />
+    <title>Ejercicio 2</title>
+  </head>
+  <body>
+    <!-- Ejercicio 2: Saber si un número introducido por teclado es primo -->
+    <script>
+      var numero = parseInt(prompt("Ingrese un número:", ""));
+      var esPrimo = true;
+      var divisor = 2;
 
-if (numero < 2) {
-  esPrimo = false;
-} else {
-  while (divisor < numero && esPrimo) {
-    if (numero % divisor === 0) {
-      esPrimo = false;
-    }
-    divisor = divisor + 1;
-  }
-}
+      if (numero < 2) {
+        esPrimo = false;
+      } else {
+        while (divisor < numero && esPrimo) {
+          if (numero % divisor === 0) {
+            esPrimo = false;
+          }
+          divisor = divisor + 1;
+        }
+      }
 
-var resultado = esPrimo ? 'El número ' + numero + ' es primo' : 'El número ' + numero + ' no es primo';
-document.write(resultado);
-console.log(resultado);
-</script>
-</body>
+      var resultado = esPrimo
+        ? "El número " + numero + " es primo"
+        : "El número " + numero + " no es primo";
+      document.write(resultado);
+      console.log(resultado);
+    </script>
+  </body>
 </html>

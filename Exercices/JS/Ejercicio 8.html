@@ -1,21 +1,26 @@
 <!doctype html>
 <html>
-<head><meta charset="utf-8"><title>Ejercicio 8</title></head>
-<body>
-<!-- Ejercicio 8: Palíndromo -->
-<script>
-var palabra = prompt('Ingrese una palabra:', '').toLowerCase();
-var palabraInvertida = '';
+  <head>
+    <meta charset="utf-8" />
+    <title>Ejercicio 8</title>
+  </head>
+  <body>
+    <!-- Ejercicio 8: Palíndromo -->
+    <script>
+      var palabra = prompt("Ingrese una palabra:", "").toLowerCase();
+      var palabraInvertida = "";
 
-for (var i = palabra.length - 1; i >= 0; i--) {
-  palabraInvertida = palabraInvertida + palabra[i];
-}
+      for (var i = palabra.length - 1; i >= 0; i--) {
+        palabraInvertida = palabraInvertida + palabra[i];
+      }
 
-var esPalindromo = palabra === palabraInvertida;
-var resultado = esPalindromo ? 'La palabra "' + palabra + '" es un palíndromo' : 'La palabra "' + palabra + '" no es un palíndromo';
+      var esPalindromo = palabra === palabraInvertida;
+      var resultado = esPalindromo
+        ? 'La palabra "' + palabra + '" es un palíndromo'
+        : 'La palabra "' + palabra + '" no es un palíndromo';
 
-document.write(resultado);
-console.log(resultado);
-</script>
-</body>
+      document.write(resultado);
+      console.log(resultado);
+    </script>
+  </body>
 </html>

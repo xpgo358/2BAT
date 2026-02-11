@@ -1,20 +1,23 @@
 <!doctype html>
 <html>
-<head><meta charset="utf-8"><title>Ejercicio 9</title></head>
-<body>
-<!-- Ejercicio 9: Nota media de n notas introducidas por teclado -->
-<script>
-var cantidad = parseInt(prompt('¿Cuántas notas desea ingresar?', ''));
-var suma = 0;
+  <head>
+    <meta charset="utf-8" />
+    <title>Ejercicio 9</title>
+  </head>
+  <body>
+    <!-- Ejercicio 9: Nota media de n notas introducidas por teclado -->
+    <script>
+      var cantidad = parseInt(prompt("¿Cuántas notas desea ingresar?", ""));
+      var suma = 0;
 
-for (var i = 0; i < cantidad; i++) {
-  var nota = parseFloat(prompt('Ingrese la nota ' + (i + 1) + ':', ''));
-  suma = suma + nota;
-}
+      for (var i = 0; i < cantidad; i++) {
+        var nota = parseFloat(prompt("Ingrese la nota " + (i + 1) + ":", ""));
+        suma = suma + nota;
+      }
 
-var media = suma / cantidad;
-document.write('Nota media: ' + media.toFixed(2));
-console.log('Nota media: ' + media.toFixed(2));
-</script>
-</body>
+      var media = suma / cantidad;
+      document.write("Nota media: " + media.toFixed(2));
+      console.log("Nota media: " + media.toFixed(2));
+    </script>
+  </body>
 </html>
