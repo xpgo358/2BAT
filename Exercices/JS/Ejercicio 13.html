@@ -1,0 +1,34 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Ejercicio 13</title>
+  </head>
+  <body>
+    <!-- Ejercicio 13: Cálculo número PI de manera recursiva con el método de Nilakantha -->
+    <script>
+      function calcularPiNilakantha(n) {
+        if (n === 0) {
+          return 0;
+        }
+
+        var signo = 1;
+        if ((n - 1) % 2 === 1) {
+          signo = -1;
+        }
+
+        var denominador = (2 * n + 1) * (2 * n + 2) * (2 * n + 3);
+        var termino = (signo * 4) / denominador;
+
+        return termino + calcularPiNilakantha(n - 1);
+      }
+
+      var iteraciones = parseInt(prompt("¿Cuántos términos?", "10"));
+      var piCalculado = 3 + calcularPiNilakantha(iteraciones - 1);
+
+      document.write("<br>PI calculado: " + piCalculado);
+
+      console.log("PI calculado:", piCalculado);
+    </script>
+  </body>
+</html>
