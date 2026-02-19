@@ -5,30 +5,31 @@
     <title>Ejercicio 13</title>
   </head>
   <body>
-    <!-- Ejercicio 13: Cálculo número PI de manera recursiva con el método de Nilakantha -->
+    <!-- Ejercicio 13: Cálculo número PI de manera recursiva con método Nilakantha -->
     <script>
-      function calcularPiNilakantha(n) {
-        if (n === 0) {
-          return 0;
+      function calcularPIRecursivo(termino, terminosMaximos) {
+        if (termino === 0) {
+          return 3;
         }
-
-        var signo = 1;
-        if ((n - 1) % 2 === 1) {
-          signo = -1;
-        }
-
-        var denominador = (2 * n + 1) * (2 * n + 2) * (2 * n + 3);
-        var termino = (signo * 4) / denominador;
-
-        return termino + calcularPiNilakantha(n - 1);
+        var n = 2 + (termino - 1) * 2;
+        var denominador = n * (n + 1) * (n + 2);
+        var signo = termino % 2 === 1 ? 1 : -1;
+        var termActual = (4 / denominador) * signo;
+        return termActual + calcularPIRecursivo(termino - 1, terminosMaximos);
       }
+      var cantidadTerminos = prompt("Introduce el número de iteraciones para calcular PI:", "20");
+      cantidadTerminos = parseInt(cantidadTerminos);
+      if (isNaN(cantidadTerminos) || cantidadTerminos < 1) {
+        cantidadTerminos = 20;
+      };
+      var pi = calcularPIRecursivo(cantidadTerminos, cantidadTerminos);
+      document.write(
+        "PI calculado (método Nilakantha recursivo): " +
+          pi +
+          "<br>",
+      );
 
-      var iteraciones = parseInt(prompt("¿Cuántos términos?", "10"));
-      var piCalculado = 3 + calcularPiNilakantha(iteraciones - 1);
-
-      document.write("<br>PI calculado: " + piCalculado);
-
-      console.log("PI calculado:", piCalculado);
+      console.log("PI calculado: " + pi);
     </script>
   </body>
 </html>
