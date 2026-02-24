@@ -1,0 +1,44 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Examen 2 - Calculadora</title>
+  </head>
+  <body>
+    <!-- Examen 2: Calculadora básica con dos números y operación -->
+    <script>
+      var num1 = parseInt(prompt("Ingresa el primer número:"));
+      var num2 = parseInt(prompt("Ingresa el segundo número:"));
+
+      var operacion = prompt(
+        "¿Qué operación deseas?\n1 - Suma\n2 - Resta\n3 - Multiplicación\n4 - División",
+      );
+
+      var resultado = 0;
+      var operador = "";
+
+      if (operacion == 1) {
+        resultado = num1 + num2;
+        operador = "+";
+      } else if (operacion == 2) {
+        resultado = num1 - num2;
+        operador = "-";
+      } else if (operacion == 3) {
+        resultado = num1 * num2;
+        operador = "*";
+      } else if (operacion == 4) {
+        if (num2 == 0) {
+          document.write("Error: no se puede dividir entre cero");
+        } else {
+          resultado = num1 / num2;
+          operador = "/";
+        }
+      }
+
+      if (num2 != 0 || operacion != 4) {
+        var mensaje = num1 + " " + operador + " " + num2 + " = " + resultado;
+        document.write(mensaje);
+      }
+    </script>
+  </body>
+</html>

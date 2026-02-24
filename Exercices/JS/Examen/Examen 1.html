@@ -1,0 +1,57 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Examen 1</title>
+  </head>
+  <body>
+    <!-- Examen 1: sumar positivos y negativos por separado -->
+    <script>
+      function pedirCantidad() {
+        var n = parseInt(prompt("¿Cuántos números vas a introducir?"), 10);
+        while (isNaN(n) || n <= 0) {
+          n = parseInt(prompt("Introduce un número válido mayor que 0:"), 10);
+        }
+        return n;
+      }
+
+      function pedirNumero(indice) {
+        var valor = parseFloat(prompt("Introduce el número " + indice + ":"));
+        while (isNaN(valor)) {
+          valor = parseFloat(
+            prompt("Número no válido. Introduce el número " + indice + ":"),
+          );
+        }
+        return valor;
+      }
+
+      function procesarNumeros(lista) {
+        var sumaPositivos = 0;
+        var sumaNegativos = 0;
+        var i;
+        for (i = 0; i < lista.length; i++) {
+          if (lista[i] >= 0) {
+            sumaPositivos += lista[i];
+          } else {
+            sumaNegativos += lista[i];
+          }
+        }
+        return [sumaPositivos, sumaNegativos];
+      }
+
+      var cantidad = pedirCantidad();
+      var numeros = [];
+      var j;
+      for (j = 1; j <= cantidad; j++) {
+        numeros.push(pedirNumero(j));
+      }
+
+      var resultado = procesarNumeros(numeros);
+      var salida = "Números introducidos: " + numeros.join(", ") + "<br>";
+      salida += "Suma de positivos: " + resultado[0] + "<br>";
+      salida += "Suma de negativos: " + resultado[1];
+
+      document.write(salida);
+    </script>
+  </body>
+</html>
