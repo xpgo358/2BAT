@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Karting XP · Panel CRUD</title>
+	<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+	<div class="bg-glow bg-glow-1"></div>
+	<div class="bg-glow bg-glow-2"></div>
+
+	<header class="topbar">
+		<div>
+			<h1>Karting XP</h1>
+			<p>CRUD moderno · tema oscuro · acentos cálidos</p>
+		</div>
+		<span class="chip">XAMPP + MySQL + PHP</span>
+	</header>
+
+	<main class="layout">
+		<aside class="sidebar">
+			<h2>Módulos</h2>
+			<nav id="entityNav"></nav>
+			<div class="ph-card">
+				<div class="ph-img"></div>
+				<small>Placeholder imagen pista</small>
+			</div>
+		</aside>
+
+		<section class="content">
+			<div class="panel">
+				<div class="panel-head">
+					<h2 id="panelTitle">Clientes</h2>
+					<div class="tabs">
+						<button data-tab="create" class="active">Nuevo</button>
+						<button data-tab="edit">Editar</button>
+						<button data-tab="delete">Eliminar</button>
+						<button data-tab="list">Listar</button>
+					</div>
+				</div>
+
+				<div id="status" class="status"></div>
+
+				<form id="crudForm" class="form-grid"></form>
+
+				<section id="cameraBox" class="camera hidden">
+          <div class="camera-tabs">
+            <button type="button" id="camTabCamera" class="active">Cámara</button>
+            <button type="button" id="camTabUpload">Subir imagen</button>
+          </div>
+          
+          <div id="cameraMode" class="camera-mode active">
+            <video id="cameraPreview" autoplay playsinline></video>
+            <canvas id="cameraCanvas" class="hidden"></canvas>
+            <div class="camera-actions">
+              <button type="button" id="startCamera">Abrir cámara</button>
+              <button type="button" id="takePhoto">Capturar foto</button>
+              <button type="button" id="stopCamera">Cerrar cámara</button>
+            </div>
+          </div>
+          
+          <div id="uploadMode" class="upload-mode hidden">
+            <label for="fileInput" class="file-label">
+              <span>📷 Selecciona una imagen</span>
+              <input type="file" id="fileInput" accept="image/*" class="file-input">
+            </label>
+          </div>
+          
+				</section>
+
+				<div class="actions">
+					<button id="submitBtn" type="button">Guardar</button>
+					<button id="refreshBtn" type="button" class="secondary">Refrescar lista</button>
+				</div>
+
+				<div id="tableWrap" class="table-wrap hidden"></div>
+			</div>
+		</section>
+	</main>
+
+	<script src="script.js"></script>
+</body>
+</html>
