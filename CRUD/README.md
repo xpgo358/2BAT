@@ -9,7 +9,7 @@ Aplicacion CRUD para gestionar un sitio de karts con las siguientes entidades:
 - Tarifas
 - Reservas
 - Carreras
-- Participaciones de carrera
+- Corredores
 - Resultados
 
 ## Alcance funcional
@@ -19,6 +19,21 @@ Cada entidad debe cubrir operaciones CRUD:
 - Read: consulta y listado
 - Update: modificacion de datos
 - Delete: baja logica o eliminacion segun el caso
+
+## Funciones basicas CRUD (definicion)
+
+- CREATE
+    - Alta de nuevos registros con validacion de campos obligatorios.
+    - Debe devolver confirmacion de guardado o errores por campo.
+- READ
+    - Listado paginado con busqueda y filtros por cada entidad.
+    - Vista detalle de cada registro con sus datos relacionados.
+- UPDATE
+    - Edicion de registros existentes con formulario precargado.
+    - Reutiliza validaciones de CREATE y registra el cambio.
+- DELETE
+    - Eliminacion con confirmacion previa.
+    - Puede ser baja logica o eliminacion/anonimizado segun reglas de negocio.
 
 ## Reglas generales de validacion
 - Todos los campos obligatorios deben validarse antes de guardar.
@@ -45,6 +60,8 @@ Cada entidad debe cubrir operaciones CRUD:
 - Precios: `DECIMAL(10,2)`.
 - Fechas: tipo `DATE`.
 - Horas: tipo `TIME`.
+- En `database/schema.sql` solo se define estructura: tablas, PK, FK y UNIQUE.
+- Validaciones de negocio, historicos por DNI, privacidad, calculos y reglas de estados se implementan en PHP (capa web).
 
 ---
 
@@ -260,36 +277,42 @@ $$
 
 ---
 
-## 7. Entidad: PARTICIPACIONES_CARRERA
+## 7. Entidad: CORREDORES
 
 ### Objetivo
 - Relacionar en cada carrera que cliente corre con que kart.
-- Evitar que se repita el mismo cliente en la misma carrera.
+- Evitar duplicados de cliente y kart dentro de la misma carrera.
 
 ### Campos
-- `id_participacion` (PK)
 - `id_carrera` (FK -> carreras.id_carrera)
-- `dni_cliente` (FK -> clientes.dni)
-- `numero_matricula` (FK -> karts.numero_matricula)
+- `dni` (FK -> clientes.dni)
+- `matricula` (FK -> karts.numero_matricula)
+
+Clave principal:
+- PK compuesta: (`id_carrera`, `dni`)
 
 ### Reglas
-- Un cliente solo puede aparecer una vez por carrera.
+- No repetir `id_carrera + dni`.
+- No repetir `id_carrera + matricula`.
 - El numero de kart se asigna manualmente desde el CRUD.
+- Las validaciones se aplican en backend PHP (no en triggers SQL).
 
 ### CREATE
-- [ ] Registrar participacion con carrera, cliente y kart.
+- [ ] Registrar corredor con carrera, cliente y kart.
 - [ ] Validar existencia de carrera, cliente y kart.
-- [ ] Validar que no se repita `dni_cliente + id_carrera`.
+- [ ] Validar que no se repita `id_carrera + dni`.
+- [ ] Validar que no se repita `id_carrera + matricula`.
 
 ### READ
 - [ ] Listado por carrera de participantes y karts.
 
 ### UPDATE
-- [ ] Permitir cambio de kart o cliente en una participacion.
-- [ ] Revalidar que no se repita `dni_cliente + id_carrera`.
+- [ ] Permitir cambio de kart o cliente en un corredor.
+- [ ] Revalidar que no se repita `id_carrera + dni`.
+- [ ] Revalidar que no se repita `id_carrera + matricula`.
 
 ### DELETE
-- [ ] Eliminar participacion con confirmacion.
+- [ ] Eliminar corredor con confirmacion.
 
 ---
 
@@ -304,12 +327,12 @@ $$
 - `tiempo_total` (formato `mm:ss.SSS`)
 - `puntos`
 
-Nota: en la siguiente iteracion, Resultados se ajustara para referenciar `participaciones_carrera`.
+Nota: en la siguiente iteracion, Resultados se ajustara para referenciar `corredores`.
 
 ### CREATE
 - [ ] Registrar resultado de un piloto en una carrera.
 - [ ] Validar existencia de carrera, cliente y kart.
-- [ ] Calcular puntos automaticamente segun la posicion.
+- [ ] Calcular puntos automaticamente segun la posicion (en PHP).
 - [ ] Guardar registro.
 
 ### Tabla de puntos
@@ -330,6 +353,7 @@ Nota: en la siguiente iteracion, Resultados se ajustara para referenciar `partic
 - [ ] Mostrar: carrera, piloto, kart, posicion, tiempo, puntos.
 - [ ] Mantener visibles resultados historicos aunque el kart este inactivo.
 - [ ] Filtros por carrera y piloto.
+- [ ] Consulta de historico por DNI (carreras y resultados).
 
 ### UPDATE
 - [ ] Editar posicion y tiempo.
@@ -339,6 +363,11 @@ Nota: en la siguiente iteracion, Resultados se ajustara para referenciar `partic
 ### DELETE
 - [ ] Eliminar resultado con confirmacion.
 - [ ] Actualizar listado.
+
+### Consulta de historico por DNI
+- Se implementa desde PHP con consultas SQL sobre `corredores`, `carreras`, `resultados`, `clientes` y `karts`.
+- Filtro principal: `dni`.
+- Orden recomendado: fecha/hora de carrera descendente.
 
 ---
 
@@ -396,12 +425,28 @@ CRUD/
 - Ficha completa de registro con datos relacionados.
 - Historial basico de cambios de estado cuando aplique (reservas/carreras).
 
+#### 5. Licencias de conductor (PDF)
+- Generar licencia de conductor desde el modulo de Clientes.
+- Datos minimos en licencia: nombre, apellidos, foto, DNI, fecha de renovacion.
+- Accion obligatoria al finalizar: boton "Imprimir licencia".
+- Salida: PDF basico con estilo visual coherente con la web (colores y tipografia).
+- El PDF debe poder abrirse en vista previa antes de imprimir.
+
+#### 6. Informe de resultados por carrera (PDF)
+- Generar un PDF por carrera desde el modulo de Carreras/Resultados.
+- Datos de cabecera: carrera (ID o nombre), fecha, hora, pista.
+- Datos adicionales: nombre de carrera (si existe).
+- Cuerpo del informe: tabla de resultados (piloto, kart, posicion, tiempo, puntos).
+- Accion obligatoria al finalizar: boton "Imprimir resultados".
+- Salida: PDF con el mismo estilo base de la web.
+
 ### Componentes comunes
 - Tabla reutilizable con paginacion, orden y filtros.
 - Modal de confirmacion para acciones sensibles.
 - Toasts de exito/error.
 - Selector de fecha/hora para reservas y carreras.
 - Selector de estado con transiciones permitidas.
+- Plantilla PDF reutilizable para documentos de licencia y resultados.
 
 ### Reglas UX
 - No perder cambios sin confirmar: aviso al salir de formularios editados.
@@ -446,5 +491,5 @@ CRUD/
 4. Tarifas
 5. Reservas
 6. Carreras
-7. Participaciones de carrera
+7. Corredores
 8. Resultados
