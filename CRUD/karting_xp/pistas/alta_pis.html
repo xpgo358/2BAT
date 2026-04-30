@@ -1,0 +1,43 @@
+<html>
+<head>
+<meta charset="utf-8" />
+<title>Alta Pista</title>
+<link rel="stylesheet" href="../styles.css">
+
+</head>
+
+<body class="form-page">
+
+<a href="../index.html" class="home-icon" title="Volver al inicio">🏠</a>
+
+<div class="container">
+
+    <h1>➕ AGREGAR PISTA</h1>
+
+    <form action="alta_pis.php" method="post">
+
+        <div class="form-group">
+            <label for="Nombre">Nombre de la Pista *</label>
+            <input type="text" name="Nombre" id="Nombre" required>
+        </div>
+
+        <div class="form-group">
+            <label for="Direccion">Dirección</label>
+            <input type="text" name="Direccion" id="Direccion">
+        </div>
+
+        <div class="form-group">
+            <label for="Descripcion">Descripción</label>
+            <textarea name="Descripcion" id="Descripcion"></textarea>
+        </div>
+
+        <button type="submit">GUARDAR</button>
+        <button type="button" class="button-secondary" onclick="window.location='../index.html'">VOLVER</button>
+
+    </form>
+
+</div>
+
+</body>
+
+</html>

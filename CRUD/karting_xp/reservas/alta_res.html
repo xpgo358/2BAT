@@ -1,0 +1,101 @@
+<html>
+<head>
+<meta charset="utf-8" />
+<title>Alta Reserva</title>
+<link rel="stylesheet" href="../styles.css">
+
+</head>
+
+<body class="form-page">
+
+<a href="../index.html" class="home-icon" title="Volver al inicio">🏠</a>
+
+<div class="container">
+
+    <h1>➕ AGREGAR RESERVA</h1>
+
+    <form action="alta_res.php" method="post">
+
+        <div class="form-group">
+            <label for="NumLicencia">Número de Licencia del Cliente *</label>
+            <select name="NumLicencia" id="NumLicencia" required>
+                <option value="">-- Selecciona Cliente --</option>
+                <?php
+                include('conexion.php');
+                $conexion = conectar();
+                $clientes = $conexion->query("SELECT NumLicencia, Nombre, Ape1 FROM clientes WHERE DNI != 'ANONIMO' ORDER BY Nombre ASC");
+                while ($cliente = $clientes->fetch_assoc()) {
+                    echo '<option value="' . htmlspecialchars($cliente['NumLicencia']) . '">' . htmlspecialchars($cliente['NumLicencia'] . ' - ' . $cliente['Nombre'] . ' ' . $cliente['Ape1']) . '</option>';
+                }
+                $conexion->close();
+                ?>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="IDPista">Pista *</label>
+            <select name="IDPista" id="IDPista" required>
+                <option value="">-- Selecciona Pista --</option>
+                <?php
+                include('conexion.php');
+                $conexion = conectar();
+                $pistas = $conexion->query("SELECT IDPista, Nombre FROM pistas ORDER BY Nombre ASC");
+                while ($pista = $pistas->fetch_assoc()) {
+                    echo '<option value="' . htmlspecialchars($pista['IDPista']) . '">' . htmlspecialchars($pista['Nombre']) . '</option>';
+                }
+                $conexion->close();
+                ?>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="FechaReserva">Fecha de Reserva *</label>
+            <input type="date" name="FechaReserva" id="FechaReserva" required>
+        </div>
+
+        <div class="form-group">
+            <label for="HoraInicio">Hora de Inicio *</label>
+            <input type="time" name="HoraInicio" id="HoraInicio" required>
+        </div>
+
+        <div class="form-group">
+            <label for="HoraFin">Hora de Fin *</label>
+            <input type="time" name="HoraFin" id="HoraFin" required>
+        </div>
+
+        <div class="form-group">
+            <label for="Personas">Número de Personas *</label>
+            <input type="number" name="Personas" id="Personas" min="1" required>
+        </div>
+
+        <div class="form-group">
+            <label for="IDTarifa">Tarifa *</label>
+            <select name="IDTarifa" id="IDTarifa" required>
+                <option value="">-- Selecciona Tarifa --</option>
+                <?php
+                include('conexion.php');
+                $conexion = conectar();
+                $tarifas = $conexion->query("SELECT IDTarifa, Nombre, PrecioPorPersona FROM tarifas WHERE Activa = 1 ORDER BY Nombre ASC");
+                while ($tarifa = $tarifas->fetch_assoc()) {
+                    echo '<option value="' . htmlspecialchars($tarifa['IDTarifa']) . '">' . htmlspecialchars($tarifa['Nombre'] . ' (' . number_format($tarifa['PrecioPorPersona'], 2, ',', '.') . '€)') . '</option>';
+                }
+                $conexion->close();
+                ?>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="Descuento">Descuento (%)</label>
+            <input type="number" name="Descuento" id="Descuento" min="0" max="100" step="0.01" value="0">
+        </div>
+
+        <button type="submit">GUARDAR</button>
+        <button type="button" class="button-secondary" onclick="window.location='index.html'">VOLVER</button>
+
+    </form>
+
+</div>
+
+</body>
+
+</html>

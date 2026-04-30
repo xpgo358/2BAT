@@ -1,0 +1,33 @@
+<html>
+<head>
+<meta charset="utf-8" />
+<title>Modificar Cliente</title>
+<link rel="stylesheet" href="../styles.css">
+
+</head>
+
+<body class="form-page">
+
+<a href="../index.html" class="home-icon" title="Volver al inicio">🏠</a>
+
+<div class="container">
+
+    <h1>✏️ MODIFICAR CLIENTE</h1>
+
+    <form action="cambio_cli.php" method="post">
+
+        <div class="form-group">
+            <label for="DNI">DNI del Cliente a Modificar *</label>
+            <input type="text" name="DNI" id="DNI" required placeholder="Ej: 12345678A">
+        </div>
+
+        <button type="submit">BUSCAR</button>
+        <button type="button" class="button-secondary" onclick="window.location='../index.html'">VOLVER</button>
+
+    </form>
+
+</div>
+
+</body>
+
+</html>

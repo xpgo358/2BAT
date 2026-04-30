@@ -1,0 +1,71 @@
+<html>
+<head>
+<meta charset="utf-8" />
+<title>KARTING XP - Gestión de Reservas</title>
+<link rel="stylesheet" href="styles.css">
+
+</head>
+
+<body class="home-page">
+
+<div class="container">
+
+    <div class="sidebar">
+        
+        <!-- Clientes -->
+        <h3>👥 Clientes</h3>
+        <a href="clientes/alta_cli.html" class="option">➕ Agregar Cliente</a>
+        <a href="clientes/baja_cli.html" class="option">❌ Eliminar Cliente</a>
+        <a href="clientes/cambio_cli.html" class="option">✏️ Modificar Cliente</a>
+        <a href="clientes/consulta_cli.php" class="option">🔍 Consultar Clientes</a>
+
+        <!-- Pistas -->
+        <h3>🏁 Pistas</h3>
+        <a href="pistas/alta_pis.html" class="option">➕ Agregar Pista</a>
+        <a href="pistas/baja_pis.html" class="option">❌ Eliminar Pista</a>
+        <a href="pistas/cambio_pis.html" class="option">✏️ Modificar Pista</a>
+        <a href="pistas/consulta_pis.php" class="option">🔍 Consultar Pistas</a>
+
+        <!-- Tarifas -->
+        <h3>💰 Tarifas</h3>
+        <a href="tarifas/alta_tar.html" class="option">➕ Agregar Tarifa</a>
+        <a href="tarifas/baja_tar.html" class="option">❌ Desactivar Tarifa</a>
+        <a href="tarifas/cambio_tar.html" class="option">✏️ Modificar Tarifa</a>
+        <a href="tarifas/consulta_tar.php" class="option">🔍 Consultar Tarifas</a>
+
+        <!-- Reservas -->
+        <h3>📅 Reservas</h3>
+        <a href="reservas/alta_res.html" class="option">➕ Agregar Reserva</a>
+        <a href="reservas/baja_res.html" class="option">❌ Eliminar Reserva</a>
+        <a href="reservas/cambio_res.html" class="option">✏️ Modificar Reserva</a>
+        <a href="reservas/consulta_res.php" class="option">🔍 Consultar Reservas</a>
+
+    </div>
+    
+    <div class="main-content">
+        <div class="header">
+            <h1>🏎️ KARTING XP</h1>
+            <p>Sistema de Gestión de Reservas</p>
+            <div class="tagline">Velocidad. Adrenalina. Control.</div>
+        </div>
+    </div>
+
+</div>
+
+<div class="footer">
+    <p>KARTING XP © 2026</p>
+</div>
+
+<script>
+    // Marcar la opción activa basada en URL
+    const links = document.querySelectorAll('.option');
+    links.forEach(link => {
+        if (window.location.pathname.includes(link.getAttribute('href'))) {
+            link.classList.add('active');
+        }
+    });
+</script>
+
+</body>
+
+</html>
