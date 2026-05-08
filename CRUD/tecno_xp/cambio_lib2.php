@@ -1,38 +1,37 @@
 <?php
+
 include('conexion.php');
 $conexion = conectar();
 
-$isbn = $_POST['ISBN'];
-$titulo = $_POST['Titulo'];
-$autor = $_POST['Autor'];
+$cod_dispositivo = $_POST['cod_dispositivo'] ?? '';
+$nombre_dispositivo = $_POST['nombre_dispositivo'] ?? '';
+$tipo = $_POST['tipo'] ?? '';
+$estado = $_POST['estado'] ?? '';
 
-// Validación básica
-if (empty($isbn) || empty($titulo)) {
-    echo "<script>alert('DATOS INCOMPLETOS'); window.location='cambio_lib.html';</script>";
+if (empty($cod_dispositivo)) {
+    echo "<script>window.location='cambio_lib.html'</script>";
     exit();
 }
 
-// UPDATE seguro
-$stmt = $conexion->prepare("
-    UPDATE libros 
-    SET Titulo = ?, Autor = ? 
-    WHERE ISBN = ?
-");
+$stmt = $conexion->prepare("UPDATE dispositivos SET nombre_dispositivo = ?, tipo = ?, estado = ? WHERE cod_dispositivo = ?");
+$stmt->bind_param("ssss", $nombre_dispositivo, $tipo, $estado, $cod_dispositivo);
+$resultado = $stmt->execute();
 
-$stmt->bind_param("sss", $titulo, $autor, $isbn);
-
-if (!$stmt->execute()) {
-    echo "ERROR AL CAMBIAR LOS DATOS";
-    exit();
+if ($resultado) {
+    echo "
+    <script>
+    alert('DISPOSITIVO ACTUALIZADO CORRECTAMENTE');
+    window.location='cambio_lib.html';
+    </script>";
+} else {
+    echo "
+    <script>
+    alert('ERROR AL ACTUALIZAR');
+    window.location='cambio_lib.html';
+    </script>";
 }
-
-echo "
-<script>
-alert('LOS DATOS HAN SIDO MODIFICADOS');
-window.location='cambio_lib.html';
-</script>
-";
 
 $stmt->close();
 $conexion->close();
+
 ?>

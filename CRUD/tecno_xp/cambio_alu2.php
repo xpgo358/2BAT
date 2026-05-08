@@ -1,40 +1,38 @@
 <?php
+
 include('conexion.php');
 $conexion = conectar();
 
-$id_usuario = $_POST['id_usuario'];
-$nombre = $_POST['nombre'];
-$ape1 = $_POST['ape1'];
-$ape2 = $_POST['ape2'];
-$grupo = $_POST['grupo'];
+$id_usuario = $_POST['id_usuario'] ?? '';
+$nombre = $_POST['nombre'] ?? '';
+$ape1 = $_POST['ape1'] ?? '';
+$ape2 = $_POST['ape2'] ?? '';
+$grupo = $_POST['grupo'] ?? '';
 
-// Validación básica
-if (empty($id_usuario) || empty($nombre)) {
-    echo "<script>alert('DATOS INCOMPLETOS'); window.location='cambio_alu.html';</script>";
+if (empty($id_usuario)) {
+    echo "<script>window.location='cambio_alu.html'</script>";
     exit();
 }
 
-// UPDATE seguro
-$stmt = $conexion->prepare("
-    UPDATE usuarios 
-    SET nombre=?, ape1=?, ape2=?, grupo=? 
-    WHERE id_usuario=?
-");
-
+$stmt = $conexion->prepare("UPDATE usuarios SET nombre = ?, ape1 = ?, ape2 = ?, grupo = ? WHERE id_usuario = ?");
 $stmt->bind_param("sssss", $nombre, $ape1, $ape2, $grupo, $id_usuario);
+$resultado = $stmt->execute();
 
-if (!$stmt->execute()) {
-    echo "ERROR AL CAMBIAR LOS DATOS";
-    exit();
+if ($resultado) {
+    echo "
+    <script>
+    alert('USUARIO ACTUALIZADO CORRECTAMENTE');
+    window.location='cambio_alu.html';
+    </script>";
+} else {
+    echo "
+    <script>
+    alert('ERROR AL ACTUALIZAR');
+    window.location='cambio_alu.html';
+    </script>";
 }
-
-echo "
-<script>
-alert('LOS DATOS HAN SIDO MODIFICADOS');
-window.location='cambio_alu.html';
-</script>
-";
 
 $stmt->close();
 $conexion->close();
+
 ?>

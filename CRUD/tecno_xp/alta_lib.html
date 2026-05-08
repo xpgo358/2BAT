@@ -1,48 +1,230 @@
-<html>
+<!DOCTYPE html>
+<html lang="es">
 <head>
-<meta charset="utf-8" />
-<center><font size=5 color="red"><br><br><b> ALTA  LIBRO </b><br><br></font></center>
-
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Agregar Dispositivo - TecnoXP</title>
 
 <style>
-  
-    body {
-    background-image: url('fondo.jpg');
-    background-size: cover;              /* Para ajustar la imagen al tamaño de la pantalla */
-    background-repeat: no-repeat;        /* Para evitar que se repita la imagen */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.container {
+    background: white;
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+    max-width: 500px;
+    width: 100%;
+}
+
+h1 {
+    text-align: center;
+    color: #667eea;
+    margin-bottom: 30px;
+    font-size: 32px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    color: #333;
+    font-weight: 600;
+    margin-bottom: 8px;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+input, select {
+    padding: 12px;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 14px;
+    transition: all 0.3s ease;
+}
+
+input:focus, select:focus {
+    outline: none;
+    border-color: #667eea;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.button-group {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+button {
+    flex: 1;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.btn-submit {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+}
+
+.btn-submit:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+}
+
+.btn-reset {
+    background: #f0f0f0;
+    color: #333;
+}
+
+.btn-reset:hover {
+    background: #e0e0e0;
+}
+
+.btn-back {
+    background: #f0f0f0;
+    color: #333;
+}
+
+.btn-back:hover {
+    background: #e0e0e0;
+}
+
+.file-input-wrapper {
+    position: relative;
+}
+
+.file-input-wrapper input[type="file"] {
+    display: none;
+}
+
+.file-input-label {
+    display: block;
+    padding: 12px;
+    background: #f8f9ff;
+    border: 2px dashed #667eea;
+    border-radius: 8px;
+    cursor: pointer;
+    text-align: center;
+    color: #667eea;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.file-input-label:hover {
+    background: #f0f2ff;
+    border-color: #764ba2;
+}
+
+.file-name {
+    display: none;
+    color: #666;
+    font-size: 12px;
+    margin-top: 8px;
+}
+
+.file-name.show {
+    display: block;
+}
 </style>
-
 </head>
+
 <body>
 
-<form action= "alta_lib.php" method="post">    
+<div class="container">
+    <h1>⬆️ Agregar Dispositivo</h1>
+    
+    <form action="alta_lib.php" method="post" enctype="multipart/form-data">
+        <div class="form-group">
+            <label for="cod_dispositivo">Código Dispositivo:</label>
+            <input type="text" name="cod_dispositivo" id="cod_dispositivo" required>
+        </div>
 
-  <table width="314" border="0" align="center">
-    <tr>
-      <td width="163">ISBN:</td>
-      <td width="156"><input type="text" name="ISBN" id="ISBN"></td>
-    </tr>
-    <tr>
-      <td>TÍTULO:</td>
-      <td><input type="text" name="Titulo" id="Titulo"></td>
-    </tr>
-    <tr>
-      <td>AUTOR:</td>
-      <td><input type="text" name="Autor" id="Autor"></td>
-    </tr>
-    <tr>
-      <td>FOTO:</td>
-      <td><input type="text" name="foto2" id="foto2"></td>
-    </tr>
+        <div class="form-group">
+            <label for="nombre_dispositivo">Nombre Dispositivo:</label>
+            <input type="text" name="nombre_dispositivo" id="nombre_dispositivo" required>
+        </div>
 
-  </table>
+        <div class="form-group">
+            <label for="tipo">Tipo:</label>
+            <select name="tipo" id="tipo" required>
+                <option value="">Selecciona un tipo</option>
+                <option value="Portátil">Portátil</option>
+                <option value="Tablet">Tablet</option>
+                <option value="Cámara">Cámara</option>
+                <option value="Monitor">Monitor</option>
+                <option value="Auriculares">Auriculares</option>
+                <option value="Otro">Otro</option>
+            </select>
+        </div>
 
-<p align="center">
-  <input type="submit" id="insertar" value="GUARDAR" name="guardar">
-  <input type="reset" id="cancelar" value="CANCELAR" name="cancelar">
-  <input type="button" onClick="window.location='index.html'" id="regresar" value="REGRESAR" name="regresar">
-</p>
-</form>
+        <div class="form-group">
+            <label for="estado">Estado:</label>
+            <select name="estado" id="estado" required>
+                <option value="">Selecciona un estado</option>
+                <option value="disponible">Disponible</option>
+                <option value="reservado">Reservado</option>
+                <option value="mantenimiento">Mantenimiento</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="imagen">Foto/Imagen:</label>
+            <div class="file-input-wrapper">
+                <label for="imagen" class="file-input-label">📷 Selecciona una imagen</label>
+                <input type="file" name="imagen" id="imagen" accept="image/*">
+                <div class="file-name" id="fileName"></div>
+            </div>
+        </div>
+
+        <div class="button-group">
+            <button type="submit" class="btn-submit">💾 Guardar</button>
+            <button type="reset" class="btn-reset">🔄 Limpiar</button>
+            <button type="button" class="btn-back" onclick="window.location='index.html'">🏠 Inicio</button>
+        </div>
+    </form>
+</div>
+
+<script>
+document.getElementById('imagen').addEventListener('change', function(e) {
+    const fileName = document.getElementById('fileName');
+    if (this.files.length > 0) {
+        fileName.textContent = '✓ ' + this.files[0].name;
+        fileName.classList.add('show');
+    } else {
+        fileName.classList.remove('show');
+    }
+});
+</script>
+
 </body>
 </html>

@@ -1,25 +1,25 @@
-﻿<?php
+<?php
 
 include('conexion.php');
 $conexion = conectar();
 
-$cod_alu = $_POST['cod_alumno'];
-$cod_lib = $_POST['cod_libro'];
-$fecha = $_POST['fecha'];
+$cod_usuario = $_POST['cod_usuario'] ?? '';
+$cod_dispositivo = $_POST['cod_dispositivo'] ?? '';
+$fecha_inicio = $_POST['fecha_inicio'] ?? '';
+$fecha_fin = $_POST['fecha_fin'] ?? '';
+$estado = $_POST['estado'] ?? '';
 
-// Validación básica
-if (empty($cod_alu) || empty($cod_lib) || empty($fecha)) {
+if (empty($cod_usuario) || empty($cod_dispositivo) || empty($fecha_inicio) || empty($fecha_fin) || empty($estado)) {
     echo "
     <script>
-    alert('FALTAN DATOS');
+    alert('FALTAN DATOS OBLIGATORIOS');
     window.location='alta_reser.html';
     </script>";
     exit();
 }
 
-// Consulta preparada (segura)
-$stmt = $conexion->prepare("INSERT INTO reserva (cod_alumno, cod_libro, fecha) VALUES (?, ?, ?)");
-$stmt->bind_param("sss", $cod_alu, $cod_lib, $fecha);
+$stmt = $conexion->prepare("INSERT INTO reservas (cod_usuario, cod_dispositivo, fecha_inicio, fecha_fin, estado) VALUES (?, ?, ?, ?, ?)");
+$stmt->bind_param("sssss", $cod_usuario, $cod_dispositivo, $fecha_inicio, $fecha_fin, $estado);
 
 $registro = $stmt->execute();
 
@@ -33,7 +33,7 @@ if (!$registro) {
 } else {
     echo "
     <script>
-    alert('DATOS GUARDADOS CORRECTAMENTE');
+    alert('RESERVA GUARDADA CORRECTAMENTE');
     window.location='alta_reser.html';
     </script>";
 }

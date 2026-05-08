@@ -2,132 +2,187 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<title>Tecno XP - Prestamo de Tecnologia</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TecnoXP - Gestor de Préstamo de Tecnología</title>
 
 <style>
-body {
+* {
     margin: 0;
-    font-family: Arial, sans-serif;
-    background-image: url('fondo.jpg');
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    color: #333;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-/* Capa oscura para mejorar lectura */
-.overlay {
-    background: rgba(255,255,255,0.85);
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     min-height: 100vh;
-    padding: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
 }
 
-/* Títulos */
-h1 {
+.container {
+    max-width: 1200px;
+    width: 100%;
+}
+
+.header {
     text-align: center;
-    color: #0d47a1;
+    color: white;
+    margin-bottom: 50px;
+}
+
+.header h1 {
     font-size: 48px;
+    font-weight: bold;
     margin-bottom: 10px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
 }
 
-h2 {
-    text-align: center;
-    color: #1976d2;
+.header p {
+    font-size: 18px;
+    opacity: 0.9;
+}
+
+.cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
     margin-bottom: 40px;
 }
 
-/* Contenedor */
-.container {
-    display: flex;
-    justify-content: center;
-    gap: 30px;
-    flex-wrap: wrap;
-}
-
-/* Tarjetas */
 .card {
     background: white;
-    padding: 25px;
     border-radius: 15px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-    width: 250px;
-    text-align: center;
-    transition: transform 0.3s;
+    padding: 30px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    transition: all 0.3s ease;
 }
 
 .card:hover {
-    transform: scale(1.05);
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.3);
 }
 
-/* Select */
-select {
+.card-icon {
+    font-size: 48px;
+    margin-bottom: 15px;
+}
+
+.card h2 {
+    color: #667eea;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.card select {
     width: 100%;
-    padding: 10px;
-    margin-top: 15px;
+    padding: 12px;
+    border: 2px solid #667eea;
     border-radius: 8px;
-    border: 1px solid #ccc;
-    font-size: 16px;
+    font-size: 14px;
+    cursor: pointer;
+    background-color: #f8f9ff;
+    color: #333;
+    transition: all 0.3s ease;
 }
 
-/* Footer */
-footer {
+.card select:hover {
+    border-color: #764ba2;
+    background-color: #f0f2ff;
+}
+
+.card select:focus {
+    outline: none;
+    border-color: #764ba2;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.card select option {
+    padding: 10px;
+}
+
+.footer {
     text-align: center;
+    color: white;
     margin-top: 50px;
-    color: #0d47a1;
-    font-weight: bold;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255,255,255,0.3);
+}
+
+.footer p {
+    font-size: 14px;
+    opacity: 0.8;
+}
+
+@media (max-width: 768px) {
+    .header h1 {
+        font-size: 36px;
+    }
+    
+    .cards-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
 }
 </style>
 </head>
 
 <body>
 
-<div class="overlay">
-
-<h1>Tecno XP</h1>
-<h2>Prestamo de tecnologia</h2>
-
 <div class="container">
 
-    <!-- Usuarios -->
-    <div class="card">
-        <h3>Usuarios</h3>
-        <select onchange="location = this.value;">
-            <option value="">Selecciona opción</option>
-            <option value="alta_alu.html">Agregar Usuario</option>
-            <option value="baja_alu.html">Eliminar Usuario</option>
-            <option value="cambio_alu.html">Modificar Usuario</option>
-            <option value="consulta_alu.php">Consultar Usuarios</option>
-        </select>
+    <div class="header">
+        <h1>⚡ TecnoXP</h1>
+        <p>Sistema de Gestión de Préstamo de Tecnología</p>
     </div>
 
-    <!-- Dispositivos -->
-    <div class="card">
-        <h3>Dispositivos</h3>
-        <select onchange="location = this.value;">
-            <option value="">Selecciona opción</option>
-            <option value="alta_lib.html">Agregar Dispositivo</option>
-            <option value="baja_lib.html">Eliminar Dispositivo</option>
-            <option value="cambio_lib.html">Modificar Dispositivo</option>
-            <option value="consulta_lib.php">Consultar Dispositivos</option>
-        </select>
+    <div class="cards-grid">
+
+        <!-- Usuarios -->
+        <div class="card">
+            <div class="card-icon">👨‍💻</div>
+            <h2>Usuarios</h2>
+            <select onchange="location = this.value;">
+                <option value="">Selecciona opción</option>
+                <option value="alta_alu.html">➕ Agregar Usuario</option>
+                <option value="baja_alu.html">❌ Eliminar Usuario</option>
+                <option value="cambio_alu.html">✏️ Modificar Usuario</option>
+                <option value="consulta_alu.php">🔍 Consultar Usuario</option>
+            </select>
+        </div>
+
+        <!-- Dispositivos -->
+        <div class="card">
+            <div class="card-icon">💻</div>
+            <h2>Dispositivos</h2>
+            <select onchange="location = this.value;">
+                <option value="">Selecciona opción</option>
+                <option value="alta_lib.html">➕ Agregar Dispositivo</option>
+                <option value="baja_lib.html">❌ Eliminar Dispositivo</option>
+                <option value="cambio_lib.html">✏️ Modificar Dispositivo</option>
+                <option value="consulta_lib.php">🔍 Consultar Dispositivos</option>
+            </select>
+        </div>
+
+        <!-- Reservas -->
+        <div class="card">
+            <div class="card-icon">📅</div>
+            <h2>Reservas</h2>
+            <select onchange="location = this.value;">
+                <option value="">Selecciona opción</option>
+                <option value="alta_reser.html">📥 Nueva Reserva</option>
+                <option value="baja_reser.html">🗑️ Cancelar Reserva</option>
+                <option value="consulta_reser.php">📋 Consultar Reservas</option>
+            </select>
+        </div>
+
     </div>
 
-    <!-- Reservas -->
-    <div class="card">
-        <h3>Reservas</h3>
-        <select onchange="location = this.value;">
-            <option value="">Selecciona opción</option>
-            <option value="alta_reser.html">Hacer Reserva</option>
-            <option value="baja_reser.html">Eliminar Reserva</option>
-            <option value="consulta_reser.php">Consultar Reservas</option>
-        </select>
+    <div class="footer">
+        <p>© TecnoXP 2026 | Sistema de Gestión de Tecnología</p>
     </div>
-
-</div>
-
-<footer>
-    © Valencia 2026
-</footer>
 
 </div>
 
