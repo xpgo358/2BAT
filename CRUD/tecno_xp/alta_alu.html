@@ -1,144 +1,163 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<title>Alta Usuario</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Agregar Usuario - TecnoXP</title>
 
 <style>
-body {
+* {
     margin: 0;
-    font-family: Arial, sans-serif;
-    background-image: url('fondo.jpg');
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-/* Capa de fondo */
-.overlay {
-    background: rgba(255,255,255,0.9);
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     min-height: 100vh;
     display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
+    padding: 20px;
 }
 
-/* Tarjeta */
-.card {
+.container {
     background: white;
-    padding: 30px;
+    padding: 40px;
     border-radius: 15px;
-    width: 350px;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+    box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+    max-width: 500px;
+    width: 100%;
 }
 
-/* Título */
-h2 {
+h1 {
     text-align: center;
-    color: #c62828;
-    margin-bottom: 20px;
+    color: #667eea;
+    margin-bottom: 30px;
+    font-size: 32px;
 }
 
-/* Inputs */
-.input-group {
-    margin-bottom: 15px;
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
 }
 
 label {
-    font-weight: bold;
-    display: block;
-    margin-bottom: 5px;
+    color: #333;
+    font-weight: 600;
+    margin-bottom: 8px;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
 }
 
-input[type="text"] {
-    width: 100%;
-    padding: 8px;
+input {
+    padding: 12px;
+    border: 2px solid #e0e0e0;
     border-radius: 8px;
-    border: 1px solid #ccc;
+    font-size: 14px;
+    transition: all 0.3s ease;
 }
 
-/* Botones */
-.buttons {
-    text-align: center;
+input:focus {
+    outline: none;
+    border-color: #667eea;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.button-group {
+    display: flex;
+    gap: 10px;
     margin-top: 20px;
 }
 
-button, input[type="submit"], input[type="reset"], input[type="button"] {
-    padding: 10px 15px;
-    margin: 5px;
+button {
+    flex: 1;
+    padding: 12px;
     border: none;
     border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
     cursor: pointer;
-    font-weight: bold;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
 }
 
-/* Colores botones */
-.save {
-    background-color: #2e7d32;
+.btn-submit {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     color: white;
 }
 
-.cancel {
-    background-color: #c62828;
-    color: white;
+.btn-submit:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
 }
 
-.back {
-    background-color: #1565c0;
-    color: white;
+.btn-reset {
+    background: #f0f0f0;
+    color: #333;
 }
 
-/* Hover */
-button:hover, input:hover {
-    opacity: 0.85;
+.btn-reset:hover {
+    background: #e0e0e0;
+}
+
+.btn-back {
+    background: #f0f0f0;
+    color: #333;
+}
+
+.btn-back:hover {
+    background: #e0e0e0;
 }
 </style>
-
 </head>
 
 <body>
 
-<div class="overlay">
-
-<div class="card">
-    <h2>Alta Usuario</h2>
-
+<div class="container">
+    <h1>⬆️ Agregar Usuario</h1>
+    
     <form action="alta_alu.php" method="post">
-
-        <div class="input-group">
-            <label>ID usuario</label>
-            <input type="text" name="id_usuario" required>
+        <div class="form-group">
+            <label for="id_usuario">ID Usuario:</label>
+            <input type="text" name="id_usuario" id="id_usuario" required>
         </div>
 
-        <div class="input-group">
-            <label>Nombre</label>
-            <input type="text" name="nombre" required>
+        <div class="form-group">
+            <label for="nombre">Nombre:</label>
+            <input type="text" name="nombre" id="nombre" required>
         </div>
 
-        <div class="input-group">
-            <label>Apellido 1</label>
-            <input type="text" name="ape1" required>
+        <div class="form-group">
+            <label for="ape1">Primer Apellido:</label>
+            <input type="text" name="ape1" id="ape1" required>
         </div>
 
-        <div class="input-group">
-            <label>Apellido 2</label>
-            <input type="text" name="ape2">
+        <div class="form-group">
+            <label for="ape2">Segundo Apellido:</label>
+            <input type="text" name="ape2" id="ape2">
         </div>
 
-        <div class="input-group">
-            <label>Grupo</label>
-            <input type="text" name="grupo" required>
+        <div class="form-group">
+            <label for="grupo">Grupo:</label>
+            <input type="text" name="grupo" id="grupo" required>
         </div>
 
-        <div class="buttons">
-            <input type="submit" value="💾 Guardar" class="save">
-            <input type="reset" value="❌ Cancelar" class="cancel">
-            <input type="button" value="🔙 Regresar" class="back" onclick="window.location='index.html'">
+        <div class="button-group">
+            <button type="submit" class="btn-submit">💾 Guardar</button>
+            <button type="reset" class="btn-reset">🔄 Limpiar</button>
+            <button type="button" class="btn-back" onclick="window.location='index.html'">🏠 Inicio</button>
         </div>
-
     </form>
-</div>
-
 </div>
 
 </body>

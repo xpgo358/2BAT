@@ -1,43 +1,145 @@
-<html>
+<!DOCTYPE html>
+<html lang="es">
 <head>
 <meta charset="utf-8">
-<br><br><center><font size=5 color="blue"><b> BUSCAR RESERVA PARA ELIMINARLA </b></font></center><br>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cancelar Reserva - TecnoXP</title>
 
 <style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-    body {
-    background-image: url('fondo.jpg');
-    background-size: cover;              /* Para ajustar la imagen al tamaño de la pantalla */
-    background-repeat: no-repeat;        /* Para evitar que se repita la imagen */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
 
+.container {
+    background: white;
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+    max-width: 500px;
+    width: 100%;
+}
+
+h1 {
+    text-align: center;
+    color: #667eea;
+    margin-bottom: 30px;
+    font-size: 32px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    color: #333;
+    font-weight: 600;
+    margin-bottom: 8px;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+input {
+    padding: 12px;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 14px;
+    transition: all 0.3s ease;
+}
+
+input:focus {
+    outline: none;
+    border-color: #667eea;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.button-group {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+button {
+    flex: 1;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.btn-submit {
+    background: #e74c3c;
+    color: white;
+}
+
+.btn-submit:hover {
+    background: #c0392b;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(231, 76, 60, 0.4);
+}
+
+.btn-back {
+    background: #f0f0f0;
+    color: #333;
+}
+
+.btn-back:hover {
+    background: #e0e0e0;
+}
 </style>
-
-
 </head>
 
 <body>
 
-<form action="baja_reser.php" method="post">       <!-- El método post envia la información del formulario a baja_reser.php -->
-  <div align="center">
-    <p><strong>NIA DEL ALUMNO:
-       <input type="text" name="cod_alumno" id="cod_alumno">
-       </strong>
-   </p>
-  </div>
+<div class="container">
+    <h1>🗑️ Cancelar Reserva</h1>
+    
+    <form action="baja_reser.php" method="post">
+        <div class="form-group">
+            <label for="cod_usuario">ID Usuario:</label>
+            <input type="text" name="cod_usuario" id="cod_usuario" required>
+        </div>
 
-  <div align="center">
-    <p><strong>ISBN DEL LIBRO:
-       <input type="text" name="cod_libro" id="cod_libro">
-       </strong>
-    </p>
-  </div>
+        <div class="form-group">
+            <label for="cod_dispositivo">Código Dispositivo:</label>
+            <input type="text" name="cod_dispositivo" id="cod_dispositivo" required>
+        </div>
 
+        <div class="form-group">
+            <label for="fecha_inicio">Fecha Inicio:</label>
+            <input type="date" name="fecha_inicio" id="fecha_inicio" required>
+        </div>
 
-  <p align="center">
-<input type="submit" value="BUSCAR" name="ELIMINAR" id="eliminar">
-<input type="button" onClick="window.location='index.html'" value="REGRESAR" name="regresar" id="regresar">
-</p>
-</form>
+        <div class="button-group">
+            <button type="submit" class="btn-submit">🗑️ Cancelar Reserva</button>
+            <button type="button" class="btn-back" onclick="window.location='index.html'">🏠 Inicio</button>
+        </div>
+    </form>
+</div>
 
 </body>
 </html>

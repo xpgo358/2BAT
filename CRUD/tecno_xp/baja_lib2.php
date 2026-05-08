@@ -1,53 +1,50 @@
 <?php
+
 include('conexion.php');
 $conexion = conectar();
 
-$isbn = $_POST['ISBN'];
+$cod_dispositivo = $_POST['cod_dispositivo'] ?? '';
 
-// Validación
-if (empty($isbn)) {
-    echo "<script>alert('ISBN VACÍO'); window.location='baja_lib.html';</script>";
+if (empty($cod_dispositivo)) {
+    echo "<script>window.location='baja_lib.html'</script>";
     exit();
 }
 
-// Comprobar si existe el libro
-$check = $conexion->prepare("SELECT ISBN FROM libros WHERE ISBN = ?");
-$check->bind_param("s", $isbn);
-$check->execute();
-$result = $check->get_result();
+// Get image to delete
+$stmt = $conexion->prepare("SELECT imagen FROM dispositivos WHERE cod_dispositivo = ?");
+$stmt->bind_param("s", $cod_dispositivo);
+$stmt->execute();
+$result = $stmt->get_result();
+$datos = $result->fetch_object();
 
-if ($result->num_rows == 0) {
-    echo "<script>alert('EL LIBRO NO EXISTE'); window.location='baja_lib.html';</script>";
-    exit();
+// Delete image file if exists
+if (!empty($datos->imagen)) {
+    $ruta_imagen = 'imagen/' . $datos->imagen;
+    if (file_exists($ruta_imagen)) {
+        unlink($ruta_imagen);
+    }
 }
 
-// ⚠️ Comprobar si está reservado
-$checkRes = $conexion->prepare("SELECT * FROM reserva WHERE cod_libro = ?");
-$checkRes->bind_param("s", $isbn);
-$checkRes->execute();
-$res = $checkRes->get_result();
+// Delete from database
+$stmt = $conexion->prepare("DELETE FROM dispositivos WHERE cod_dispositivo = ?");
+$stmt->bind_param("s", $cod_dispositivo);
+$resultado = $stmt->execute();
 
-if ($res->num_rows > 0) {
-    echo "<script>alert('NO SE PUEDE ELIMINAR: LIBRO RESERVADO'); window.location='baja_lib.html';</script>";
-    exit();
+if ($resultado) {
+    echo "
+    <script>
+    alert('DISPOSITIVO ELIMINADO CORRECTAMENTE');
+    window.location='baja_lib.html';
+    </script>";
+} else {
+    echo "
+    <script>
+    alert('ERROR AL ELIMINAR');
+    window.location='baja_lib.html';
+    </script>";
 }
-
-// Eliminar
-$stmt = $conexion->prepare("DELETE FROM libros WHERE ISBN = ?");
-$stmt->bind_param("s", $isbn);
-
-if (!$stmt->execute()) {
-    echo "ERROR AL ELIMINAR";
-    exit();
-}
-
-echo "
-<script>
-alert('LIBRO ELIMINADO');
-window.location='baja_lib.html';
-</script>
-";
 
 $stmt->close();
 $conexion->close();
+
 ?>
