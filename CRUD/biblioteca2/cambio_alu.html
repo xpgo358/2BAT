@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Modificar Alumno</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-image: url('fondo.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+/* Fondo translúcido */
+.overlay {
+    background: rgba(255,255,255,0.9);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Tarjeta */
+.card {
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    width: 320px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+    text-align: center;
+}
+
+/* Título */
+h2 {
+    color: #1565c0;
+    margin-bottom: 20px;
+}
+
+/* Input */
+input[type="text"] {
+    width: 90%;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    margin-top: 10px;
+    text-align: center;
+}
+
+/* Botones */
+.buttons {
+    margin-top: 20px;
+}
+
+input[type="submit"], input[type="button"] {
+    padding: 10px 15px;
+    margin: 5px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+/* Colores */
+.search {
+    background-color: #2e7d32;
+    color: white;
+}
+
+.back {
+    background-color: #1565c0;
+    color: white;
+}
+
+/* Hover */
+input:hover {
+    opacity: 0.85;
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="overlay">
+
+<div class="card">
+    <h2>✏️ Modificar Alumno</h2>
+
+    <form action="cambio_alu.php" method="post">
+
+        <p><strong>Introduce el NIA</strong></p>
+        <input type="text" name="NIA" required placeholder="Ej: 12345">
+
+        <div class="buttons">
+            <input type="submit" value="🔍 Buscar" class="search">
+            <input type="button" value="🔙 Regresar" class="back" onclick="window.location='index.html'">
+        </div>
+
+    </form>
+</div>
+
+</div>
+
+</body>
+</html>

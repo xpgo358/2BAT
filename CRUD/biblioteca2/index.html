@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Biblioteca IES Benlliure</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-image: url('fondo.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    color: #333;
+}
+
+/* Capa oscura para mejorar lectura */
+.overlay {
+    background: rgba(255,255,255,0.85);
+    min-height: 100vh;
+    padding: 40px;
+}
+
+/* Títulos */
+h1 {
+    text-align: center;
+    color: #0d47a1;
+    font-size: 48px;
+    margin-bottom: 10px;
+}
+
+h2 {
+    text-align: center;
+    color: #1976d2;
+    margin-bottom: 40px;
+}
+
+/* Contenedor */
+.container {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+/* Tarjetas */
+.card {
+    background: white;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    width: 250px;
+    text-align: center;
+    transition: transform 0.3s;
+}
+
+.card:hover {
+    transform: scale(1.05);
+}
+
+/* Select */
+select {
+    width: 100%;
+    padding: 10px;
+    margin-top: 15px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    margin-top: 50px;
+    color: #0d47a1;
+    font-weight: bold;
+}
+</style>
+</head>
+
+<body>
+
+<div class="overlay">
+
+<h1>📚 Biblioteca IES Benlliure</h1>
+<h2>Préstamo de libros</h2>
+
+<div class="container">
+
+    <!-- Alumnos -->
+    <div class="card">
+        <h3>👨‍🎓 Alumnos</h3>
+        <select onchange="location = this.value;">
+            <option value="">Selecciona opción</option>
+            <option value="alta_alu.html">➕ Agregar Alumno</option>
+            <option value="baja_alu.html">❌ Eliminar Alumno</option>
+            <option value="cambio_alu.html">✏️ Modificar Alumno</option>
+            <option value="consulta_alu.php">🔍 Consultar Alumno</option>
+        </select>
+    </div>
+
+    <!-- Libros -->
+    <div class="card">
+        <h3>📖 Libros</h3>
+        <select onchange="location = this.value;">
+            <option value="">Selecciona opción</option>
+            <option value="alta_lib.html">➕ Agregar Libro</option>
+            <option value="baja_lib.html">❌ Eliminar Libro</option>
+            <option value="cambio_lib.html">✏️ Modificar Libro</option>
+            <option value="consulta_lib.php">🔍 Consultar Libro</option>
+        </select>
+    </div>
+
+    <!-- Préstamo -->
+    <div class="card">
+        <h3>🔄 Préstamo</h3>
+        <select onchange="location = this.value;">
+            <option value="">Selecciona opción</option>
+            <option value="alta_reser.html">📥 Hacer Préstamo</option>
+            <option value="baja_reser.html">🗑️ Eliminar Reserva</option>
+            <option value="consulta_reser.php">📋 Consultar Préstamos</option>
+        </select>
+    </div>
+
+</div>
+
+<footer>
+    © Valencia 2026
+</footer>
+
+</div>
+
+</body>
+</html>
