@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Modificar Dispositivo - TecnoXP</title>
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+<div class="container">
+    <h1>🔍 Buscar Dispositivo</h1>
+    
+    <form action="cambio_dispositivo.php" method="post">
+        <div class="form-group">
+            <label for="cod_dispositivo">Código Dispositivo:</label>
+            <input type="text" name="cod_dispositivo" id="cod_dispositivo" required placeholder="Ej: PORT-01">
+        </div>
+
+        <div class="button-group">
+            <button type="submit" class="btn-submit">🔍 Buscar</button>
+            <button type="button" class="btn-back" onclick="window.location='index.html'">🏠 Inicio</button>
+        </div>
+    </form>
+</div>
+
+</body>
+</html>

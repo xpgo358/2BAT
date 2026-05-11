@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Eliminar Usuario - TecnoXP</title>
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+<div class="container">
+    <h1>❌ Eliminar Usuario</h1>
+    
+    <form action="baja_usuario.php" method="post">
+        <div class="form-group">
+            <label for="id_usuario">ID Usuario a Eliminar:</label>
+            <input type="text" name="id_usuario" id="id_usuario" required placeholder="Ej: 1111A">
+        </div>
+
+        <div class="button-group">
+            <button type="submit" class="btn-submit">🗑️ Eliminar</button>
+            <button type="button" class="btn-back" onclick="window.location='index.html'">🏠 Inicio</button>
+        </div>
+    </form>
+</div>
+
+</body>
+</html>

@@ -58,18 +58,17 @@ CREATE TABLE `dispositivos` (
   `cod_dispositivo` varchar(20) NOT NULL,
   `nombre_dispositivo` varchar(60) NOT NULL,
   `tipo` varchar(40) NOT NULL,
-  `estado` varchar(20) NOT NULL,
-  `imagen` varchar(120) DEFAULT NULL
+  `estado` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `dispositivos`
 --
 
-INSERT INTO `dispositivos` (`cod_dispositivo`, `nombre_dispositivo`, `tipo`, `estado`, `imagen`) VALUES
-('PORT-01', 'Portátil Lenovo ThinkPad', 'Portátil', 'disponible', NULL),
-('TAB-02', 'Tablet Samsung Galaxy', 'Tablet', 'disponible', NULL),
-('CAM-03', 'Cámara Canon EOS', 'Cámara', 'disponible', NULL);
+INSERT INTO `dispositivos` (`cod_dispositivo`, `nombre_dispositivo`, `tipo`, `estado`) VALUES
+('PORT-01', 'Portátil Lenovo ThinkPad', 'Portátil', 'disponible'),
+('TAB-02', 'Tablet Samsung Galaxy', 'Tablet', 'disponible'),
+('CAM-03', 'Cámara Canon EOS', 'Cámara', 'disponible');
 
 -- --------------------------------------------------------
 
@@ -81,16 +80,15 @@ CREATE TABLE `reservas` (
   `cod_usuario` varchar(12) NOT NULL,
   `cod_dispositivo` varchar(20) NOT NULL,
   `fecha_inicio` date NOT NULL,
-  `fecha_fin` date NOT NULL,
-  `estado` varchar(20) NOT NULL
+  `fecha_fin` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `reservas`
 --
 
-INSERT INTO `reservas` (`cod_usuario`, `cod_dispositivo`, `fecha_inicio`, `fecha_fin`, `estado`) VALUES
-('1111A', 'PORT-01', '2026-05-08', '2026-05-15', 'activa');
+INSERT INTO `reservas` (`cod_usuario`, `cod_dispositivo`, `fecha_inicio`, `fecha_fin`) VALUES
+('1111A', 'PORT-01', '2026-05-08', '2026-05-15');
 
 --
 -- Índices para tablas volcadas
